@@ -1,0 +1,11 @@
+# intelliJ + Gradle
+.idea/
+.gradle/
+build/
+
+# node bullshit
+dist/
+node_modules
+
+# macOS specifics
+.DS_Store
