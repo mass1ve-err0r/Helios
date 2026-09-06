@@ -1,0 +1,29 @@
+plugins {
+    id "org.springframework.boot" version "${springBootVersion}"
+}
+
+dependencies {
+    implementation project(":submodules:api")
+    implementation project(":submodules:api-models")
+    implementation project(":submodules:core")
+    implementation project(":submodules:persistence")
+    implementation project(":submodules:logging")
+    implementation project(":submodules:http")
+    implementation project(":submodules:security")
+    implementation project(":submodules:utilities")
+
+    //implementation project(":frontend")
+}
+
+/*
+tasks.register('copyResources', Copy) {
+    dependsOn ':frontend:npmBuild'
+    from("${rootProject.rootDir}/frontend/dist") {
+        include 'assets/**'
+        include 'index.html'
+    }
+    into("src/main/resources/static/ui")
+}
+
+processResources.dependsOn 'copyResources'
+*/
