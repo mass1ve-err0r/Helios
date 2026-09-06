@@ -1,0 +1,12 @@
+###
+POST http://localhost:8090/api/pushnotifications/send
+Content-Type: application/json
+Authorization: Basic YWRtaW46aGVsaW9zLWFkbWlu
+
+{
+  "topic": "software.baig.Helios-Mobile",
+  "receiver": "SBG_iP17PM",
+  "title": "Test",
+  "subtitle": "TestSubtitle",
+  "message": "AYO"
+}
