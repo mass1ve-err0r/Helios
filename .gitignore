@@ -9,3 +9,10 @@ node_modules
 
 # macOS specifics
 .DS_Store
+
+# Local debugging
+database.*.db
+
+# Sensitive things
+*.env
+AuthKey.p8
