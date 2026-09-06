@@ -1,0 +1,21 @@
+pluginManagement {
+    repositories {
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+
+rootProject.name = 'Helios'
+include(':application')
+
+include(':frontend')
+
+include('submodules:annotations')
+include('submodules:http')
+include('submodules:api')
+include('submodules:api-models')
+include('submodules:persistence')
+include('submodules:logging')
+include('submodules:core')
+include('submodules:security')
+include('submodules:utilities')

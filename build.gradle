@@ -1,0 +1,104 @@
+plugins {
+    id "io.spring.dependency-management" version "${springDependencyBomVersion}"
+    id "java"
+    id 'pl.allegro.tech.build.axion-release' version '1.18.16'
+}
+
+scmVersion {
+    tag {
+        prefix = ''
+    }
+    versionCreator('simple')
+    versionIncrementer('incrementMinor')
+}
+
+task printVersion {
+    doLast {
+        print scmVersion.version
+    }
+}
+
+allprojects {
+    apply plugin: 'jacoco'
+
+    repositories {
+        mavenCentral()
+    }
+
+    group = 'software.baig.helios'
+    version = scmVersion.version
+
+    tasks.withType(JavaCompile).configureEach {
+        options.compilerArgs.add("-parameters")
+    }
+
+    java {
+        toolchain {
+            languageVersion = JavaLanguageVersion.of(25)
+        }
+    }
+}
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'io.spring.dependency-management'
+
+    pluginManager.withPlugin('org.springframework.boot') {
+        springBoot {
+            buildInfo {
+                properties {
+                    additional = [
+                            'commit-hash': rootProject.scmVersion.scmPosition.revision
+                    ]
+                }
+            }
+        }
+
+        bootRun {
+            jvmArgs = ["-Djava.net.preferIPv4Stack=true"]
+        }
+    }
+
+    dependencies {
+        // Spring
+        implementation 'org.springframework.boot:spring-boot-starter-validation'
+        implementation "org.springframework.boot:spring-boot-starter-data-jpa"
+        implementation "org.springframework.boot:spring-boot-starter-web"
+        implementation "org.springframework.boot:spring-boot-starter-security"
+        implementation 'org.springframework.boot:spring-boot-starter-liquibase'
+        testImplementation "org.springframework.boot:spring-boot-test-autoconfigure"
+        testImplementation "org.springframework.boot:spring-boot-starter-test"
+
+        // Custom
+        implementation 'com.google.guava:guava:33.4.0-jre'
+        implementation 'com.eatthepath:pushy:0.15.6'
+
+        // Metrics
+        implementation 'io.micrometer:micrometer-core'
+    }
+
+    dependencyManagement {
+        imports {
+            mavenBom("org.springframework.boot:spring-boot-dependencies:${springBootVersion}")
+        }
+    }
+
+    jacocoTestReport {
+        reports {
+            html.required = true
+            xml.required = true
+        }
+    }
+
+    test {
+        useJUnitPlatform()
+    }
+    test.outputs.upToDateWhen { false }
+
+    tasks.withType(Jar).tap {
+        configureEach {
+            duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+        }
+    }
+
+}
