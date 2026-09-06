@@ -1,0 +1,6 @@
+dependencies {
+    implementation project(":submodules:annotations")
+    implementation project(":submodules:api-models")
+    implementation project(":submodules:persistence")
+    implementation project(":submodules:utilities")
+}
