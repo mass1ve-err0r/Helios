@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="1.0.1-1" author="Saadat Baig">
+        <comment>
+            Create Devices Table
+        </comment>
+
+        <createTable tableName="devices">
+            <column name="id" type="varchar(36)">
+                <constraints primaryKey="true" primaryKeyName="pk_devices" nullable="false"/>
+            </column>
+
+            <column name="created_at" type="timestamp with time zone"/>
+
+            <column name="last_seen" type="timestamp with time zone"/>
+
+            <column name="name" type="varchar(255)"/>
+
+            <column name="token" type="varchar(255)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="1.0.1-2" author="Saadat Baig">
+        <comment>
+            Create PN Table
+        </comment>
+
+        <createTable tableName="pushnotifications">
+            <column name="id" type="varchar(36)">
+                <constraints primaryKey="true" primaryKeyName="pk_pushnotifications" nullable="false"/>
+            </column>
+
+            <column name="created_at" type="timestamp with time zone"/>
+
+            <column name="topic" type="varchar(255)"/>
+
+            <column name="title" type="varchar(255)"/>
+
+            <column name="subtitle" type="varchar(255)"/>
+
+            <column name="body" type="varchar(255)"/>
+
+            <column name="payload" type="varchar(255)"/>
+
+            <column name="state" type="varchar(255)"/>
+
+            <column name="receiver" type="varchar(255)"/>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

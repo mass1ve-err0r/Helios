@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="1.0.0-1" author="Saadat Baig">
+        <comment>
+            Create Application Log
+        </comment>
+
+        <createTable tableName="application_log">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="logged_at" type="TIMESTAMP WITH TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="level" type="VARCHAR(16)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="logger_name" type="VARCHAR(512)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="thread_name" type="VARCHAR(255)"/>
+
+            <column name="message" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="exception" type="TEXT"/>
+
+        </createTable>
+
+        <createIndex
+                tableName="application_log"
+                indexName="idx_application_log_logged_at">
+
+            <column name="logged_at"/>
+        </createIndex>
+
+        <createIndex
+                tableName="application_log"
+                indexName="idx_application_log_level">
+
+            <column name="level"/>
+        </createIndex>
+
+        <createIndex
+                tableName="application_log"
+                indexName="idx_application_log_logged_at_level">
+
+            <column name="logged_at"/>
+            <column name="level"/>
+        </createIndex>
+    </changeSet>
+
+</databaseChangeLog>

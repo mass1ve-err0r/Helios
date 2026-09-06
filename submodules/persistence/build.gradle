@@ -1,0 +1,8 @@
+dependencies {
+    implementation "com.h2database:h2:2.2.220"
+    implementation "org.liquibase:liquibase-core"
+    implementation 'org.postgresql:postgresql'
+
+    implementation project(":submodules:annotations")
+    implementation project(":submodules:api-models")
+}
