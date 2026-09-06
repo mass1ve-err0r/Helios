@@ -1,0 +1,8 @@
+dependencies {
+    implementation project(":submodules:api-models")
+    implementation project(":submodules:logging")
+    implementation project(":submodules:http")
+    implementation project(":submodules:core")
+    implementation project(":submodules:persistence")
+    implementation project(":submodules:utilities")
+}
