@@ -4,5 +4,6 @@ dependencies {
     implementation 'org.postgresql:postgresql'
 
     implementation project(":submodules:annotations")
+    implementation project(":submodules:logging")
     implementation project(":submodules:api-models")
 }
