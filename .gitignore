@@ -13,6 +13,9 @@ node_modules
 # Local debugging
 database.*.db
 
+# Application
+application/src/main/resources/static
+
 # Sensitive things
 *.env
 AuthKey.p8
