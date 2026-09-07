@@ -1,6 +1,10 @@
 # Helios
 > Java 25 | Spring Boot 4.x | Spring 7.x | Vue 3.x
 
+
+> [!NOTE]
+> The companion app for your MDM, HeliosMobile, can be found [HERE](https://github.com/mass1ve-err0r/Helios-iOS)
+
 Helios is a Spring Boot push notification service with an embedded management UI.
 
 It provides one deployable application for device registration, push notification delivery, monitoring, and runtime administration.
