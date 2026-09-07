@@ -15,7 +15,6 @@ dependencies {
     //implementation project(":frontend")
 }
 
-/*
 tasks.register('copyResources', Copy) {
     dependsOn ':frontend:npmBuild'
     from("${rootProject.rootDir}/frontend/dist") {
@@ -26,4 +25,3 @@ tasks.register('copyResources', Copy) {
 }
 
 processResources.dependsOn 'copyResources'
-*/

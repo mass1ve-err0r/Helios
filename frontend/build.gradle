@@ -1,0 +1,23 @@
+plugins {
+    id "com.github.node-gradle.node" version "7.0.1"
+}
+
+node {
+    version = '24.18.1'
+    download = true
+}
+
+clean {
+    delete "${project.projectDir}/dist"
+}
+
+tasks.register('npmBuild', NpmTask) {
+    inputs.files(fileTree('src')).withPathSensitivity(PathSensitivity.RELATIVE)
+    inputs.files('package.json', 'package-lock.json').withPathSensitivity(PathSensitivity.RELATIVE)
+    inputs.dir('public').withPathSensitivity(PathSensitivity.RELATIVE)
+
+    outputs.cacheIf { true }
+
+    dependsOn npmInstall
+    args = ['run', 'build']
+}
