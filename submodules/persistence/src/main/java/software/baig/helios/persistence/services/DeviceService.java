@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import software.baig.helios.api.models.requests.RegisterReceiverRequest;
 import software.baig.helios.persistence.dto.mappers.DeviceDtoMapper;
 import software.baig.helios.persistence.dto.models.DeviceDto;
+import software.baig.helios.persistence.dto.models.DeviceOverviewDto;
 import software.baig.helios.persistence.entities.Device;
 import software.baig.helios.persistence.repositories.DeviceRepository;
 
@@ -60,6 +61,19 @@ public class DeviceService {
         return repository.findAll()
                 .stream()
                 .map(dtoMapper::toDto)
+                .toList();
+    }
+
+    @Transactional(readOnly = true)
+    public List<DeviceOverviewDto> allAsOverviewDto() {
+        return repository.findAll()
+                .stream()
+                .map(device -> new DeviceOverviewDto(
+                        device.getId(),
+                        device.getCreatedAt(),
+                        device.getLastSeen(),
+                        device.getName()
+                ))
                 .toList();
     }
 
