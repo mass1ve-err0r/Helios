@@ -12,6 +12,6 @@ public record HeliosProperties(
         String registrationSafetyToken,
         List<String> serviceType
 ) {
-    public record Apns(String teamId, String keyId) { }
+    public record Apns(String teamId, String keyId, String bundleId) { }
     public record Fcm(String id) { }
 }
