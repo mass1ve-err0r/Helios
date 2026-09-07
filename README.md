@@ -11,6 +11,14 @@ It provides one deployable application for device registration, push notificatio
 
 The frontend is built with Vue 3 and Vuetify. It is packaged with the Spring application, so a normal deployment does not require a separate frontend service.
 
+## Product Images
+
+Monitoring View:
+![Screenshot1](/GitImages/Screen1.PNG)
+
+Device View / AdHoc Notification Dispatch:
+![Screenshot2](/GitImages/Screen2.PNG)
+
 ## Features
 
 - Register devices for push notification delivery
