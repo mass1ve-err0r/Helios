@@ -14,10 +14,10 @@ The frontend is built with Vue 3 and Vuetify. It is packaged with the Spring app
 ## Product Images
 
 Monitoring View:
-![Screenshot1](/GitImages/Screen1.PNG)
+![Screenshot1](/GitImages/Screen1.png)
 
 Device View / AdHoc Notification Dispatch:
-![Screenshot2](/GitImages/Screen2.PNG)
+![Screenshot2](/GitImages/Screen2.png)
 
 ## Features
 
